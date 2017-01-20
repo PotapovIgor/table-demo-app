@@ -5,3 +5,36 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+
+User.create!(email: "example@railstutorial.org",
+             password:              "foobar",
+             password_confirmation: "foobar")
+
+10.times do |n|
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  User.create!(email: email,
+               password:              password,
+               password_confirmation: password)
+end
+
+Customer.create!(email: "example@railstutorial.org")
+
+10.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  Customer.create!(name:  name,
+               email: email)
+end
+
+Product.create!(title:  "Example Name",
+                 price: 42)
+
+10.times do
+  title  = Faker::Pokemon.name
+  price = 42
+  Product.create!(title: title,
+                   price: price)
+end
