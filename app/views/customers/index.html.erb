@@ -17,13 +17,21 @@
         <td><%= customer.name %></td>
         <td><%= customer.email %></td>
         <td><%= link_to 'Show', customer %></td>
-        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-        <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if customer.user == current_user %>
+          <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+          <td><%= link_to 'Destroy', customer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+
+<h3>Import Customer</h3>
+<%= form_tag import_customers_path, multipart:true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload Customers" %>
+<% end %>
 
 <%= link_to 'New Customer', new_customer_path %>

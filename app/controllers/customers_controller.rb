@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_filter :authentificate_user!, except: [:index, :show]
 
   # GET /customers
   # GET /customers.json
@@ -59,6 +60,11 @@ class CustomersController < ApplicationController
       format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def import
+    Customer.import(params[:file])
+    redirect_to customers_path, notice: "Customers Added successfully"
   end
 
   private

@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_filter :authentificate_user!, except: [:index, :show]
 
   # GET /products
   # GET /products.json
@@ -59,6 +60,11 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def import
+    Product.import(params[:file])
+    redirect_to products_path, notice: "Products Added successfully"
   end
 
   private
