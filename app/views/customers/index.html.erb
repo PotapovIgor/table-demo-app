@@ -30,7 +30,7 @@
 
 <h3>Import Customer</h3>
 <%= form_tag import_customers_path, multipart:true do %>
-  <%= file_field_tag :file %>
+  <%= file_field_tag :file, accept: 'document/csv'%>
   <%= submit_tag "Upload Customers" %>
 <% end %>
 

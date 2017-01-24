@@ -8,12 +8,12 @@
 
 
 
-User.create!(email: "example@railstutorial.org",
+User.create!(email: "example@edgecsv.org",
              password:              "foobar",
              password_confirmation: "foobar")
 
 10.times do |n|
-  email = "example-#{n+1}@railstutorial.org"
+  email = "example-#{n+1}@edgecsv.org"
   password = "password"
   User.create!(email: email,
                password:              password,
@@ -21,11 +21,11 @@ User.create!(email: "example@railstutorial.org",
 end
 
 Customer.create!(name:"Example name",
-  email: "example@railstutorial.org")
+  email: "example@edgecsv.org")
 
 10.times do |n|
   name  = Faker::Name.name
-  email = "example-#{n+1}@railstutorial.org"
+  email = "example-#{n+1}@edgecsv.org"
   Customer.create!(name:  name,
                email: email)
 end

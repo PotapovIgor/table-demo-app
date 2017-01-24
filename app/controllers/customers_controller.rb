@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
-  before_filter :authentificate_user!, except: [:index, :show]
+  #before_filter :authentificate_user!, except: [:index, :show]
 
   # GET /customers
   # GET /customers.json
@@ -63,6 +63,7 @@ class CustomersController < ApplicationController
   end
 
   def import
+    byebug
     Customer.import(params[:file])
     redirect_to customers_path, notice: "Customers Added successfully"
   end
